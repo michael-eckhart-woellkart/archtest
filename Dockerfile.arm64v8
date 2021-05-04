@@ -1,0 +1,5 @@
+# syntax=docker/dockerfile:1
+ARG ARCH=arm64v8/
+FROM ${ARCH}ubuntu:18.04
+COPY . /app
+CMD python /app/app.py
