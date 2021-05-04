@@ -2,8 +2,10 @@
 ARG ARCH=arm32v7/
 FROM ${ARCH}ubuntu:18.04
 COPY qemu-arm-static /usr/bin/
-RUN curl -sL https://deb.nodesource.com/setup_10.x |  bash -
-RUN wget https://nodejs.org/dist/v10.16.1/node-v10.16.1-linux-armv7l.tar.xz && tar -xJf node-v10.16.1-linux-armv6l.tar.xz && cd node-v10.16.1-linux-armv6l/ && sudo cp -R * /usr/local/
+RUN curl -O \  
+  https://nodejs.org/dist/v4.5.0/node-v4.5.0-linux-armv6l.tar.gz && \
+  tar -xvf node-v4.5.0-linux-armv6l.tar.gz -C /usr/local --strip-components=1 && \
+  rm node-v4.5.0-linux-armv6l.tar.gz
 
 RUN apt-get install -y libpangocairo-1.0-0 libx11-xcb1 libxcomposite1 libxcursor1 libxdamage1 libxi6 libxtst6 libnss3 libcups2 libxss1 libxrandr2 libasound2 libatk1.0-0 libgtk-3-0 libdrm2 libgbm1 libxshmfence1
 ADD https://pdiartefacts.blob.core.windows.net/dockerimages/data/fonts.tar.gz?sp=r&st=2021-04-02T06:09:55Z&se=2100-04-02T14:09:55Z&spr=https&sv=2020-02-10&sr=c&sig=utrmXLlxft2HDSxtBok74ubz0m1iZVCNlEH9WyVUniY%3D /tmp/fonts.tar.gz 
