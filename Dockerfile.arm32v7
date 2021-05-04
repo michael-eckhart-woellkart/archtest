@@ -1,0 +1,7 @@
+# syntax=docker/dockerfile:1
+ARG ARCH=arm32v7/
+FROM ${ARCH}ubuntu:18.04
+RUN apt-get install curl
+RUN curl -sL https://deb.nodesource.com/setup_10.x |  bash -
+COPY . /app
+CMD python /app/app.py
